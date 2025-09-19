@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nayane Damasceno • Lash Designer</title>
+    <link rel="icon" href="WhatsApp LOGO.jpeg" type="image/png" />
+    <meta
+      name="description"
+      content="Extensão de cílios, design de sobrancelhas e beleza do olhar em Marília - SP."
+    />
+    <style>
+      :root {
+        --gold: #d4af37;
+        --gold-2: #c9a227;
+        --offwhite: #faf7f2;
+        --bege: #ede5d9;
+        --preto: #111111;
+        --branco: #ffffff;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--offwhite);
+        color: var(--preto);
+        font-family: Poppins, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
+          "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.5;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .container {
+        width: min(1100px, 100%);
+        margin-inline: auto;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        background: rgba(250, 247, 242, 0.8);
+        backdrop-filter: saturate(150%) blur(4px);
+        border-bottom: 1px solid #00000012;
+        z-index: 50;
+      }
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+      }
+      .brand {
+        display: flex;
+        gap: 0.75rem;
+        align-items: center;
+        font-weight: 600;
+      }
+      .brand__mark {
+        width: 38px;
+        height: 38px;
+        border-radius: 150%;
+        border: 2px solid var(--gold);
+        display: grid;
+        place-items: center;
+      }
+      .brand__mark span {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        color: var(--gold);
+      }
+      nav ul {
+        display: flex;
+        gap: 1rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        font-weight: 500;
+      }
+      nav a:hover {
+        color: var(--gold);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2rem;
+        align-items: center;
+        padding: 3rem 0 2rem;
+        border-bottom: 1px solid #00000010;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 4.5vw, 3.25rem);
+        margin: 0 0 0.5rem;
+        color: var(--preto);
+      }
+      .accent {
+        color: var(--gold);
+      }
+      .lead {
+        color: #444;
+        max-width: 60ch;
+      }
+      .cta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+      .btn {
+        padding: 0.8rem 1.05rem;
+        border-radius: 999px;
+        border: 1px solid var(--gold);
+        font-weight: 600;
+        transition: 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .btn--gold {
+        background: var(--gold);
+        color: var(--branco);
+        border-color: var(--gold-2);
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px #00000015;
+      }
+
+      .card {
+        background: var(--branco);
+        border: 1px solid #00000010;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px #00000008;
+      }
+      .hero img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        border: 1px solid #00000012;
+        display: block;
+      }
+
+      .badges {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+      .badge {
+        background: var(--bege);
+        border: 1px solid #00000010;
+        border-radius: 999px;
+        padding: 0.35rem 0.7rem;
+        font-size: 0.85rem;
+      }
+
+      .section {
+        padding: 2.5rem 0;
+      }
+      .section h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.4rem, 3vw, 2rem);
+        margin: 0 0 1rem;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      .service {
+        padding: 1.2rem;
+      }
+      .service h3 {
+        margin: 0.2rem 0 0.4rem;
+        font-size: 1.05rem;
+      }
+      .service p {
+        margin: 0;
+        color: #555;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.6rem;
+      }
+      .gallery img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 14px;
+        border: 1px solid #00000012;
+      }
+      .gallery figure {
+        margin: 0;
+        position: relative;
+        aspect-ratio: 1/1;
+      }
+
+      .contact {
+        background: linear-gradient(160deg, var(--bege), var(--offwhite));
+        border: 1px solid #00000010;
+        border-radius: 20px;
+        padding: 1.5rem;
+        display: grid;
+        gap: 0.8rem;
+      }
+      .contact p {
+        margin: 0.1rem 0;
+        color: #444;
+      }
+      .contact .row {
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
+      }
+      .chip {
+        border: 1px solid #00000015;
+        border-radius: 999px;
+        padding: 0.45rem 0.75rem;
+        background: var(--branco);
+      }
+      .address {
+        display: flex;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+      .address svg {
+        flex: 0 0 auto;
+        margin-top: 0.3rem;
+      }
+
+      footer {
+        padding: 2rem 0;
+        color: #666;
+        text-align: center;
+      }
+      .divider {
+        height: 1px;
+        background: #00000012;
+        margin: 1.2rem 0;
+      }
+
+      @media (max-width: 920px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 1.25rem;
+        }
+        .gallery {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container topbar">
+        <div class="brand">
+          <div class="brand__mark"><span>N</span></div>
+          <div>
+            Nayane Damasceno
+            <div style="font-size: 0.85rem; font-weight: 500; color: #666">
+              Lash Designer • Marília - SP
+            </div>
+          </div>
+        </div>
+        <nav aria-label="Seções">
+          <ul>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#galeria">Resultados</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="container hero">
+        <div>
+          <h1>
+            Beleza do olhar com <span class="accent">delicadeza</span> e
+            <span class="accent">técnica</span>
+          </h1>
+          <p class="lead">
+            Atendimento acolhedor em espaço aconchegante, com foco em extensão
+            de cílios, sorancelhas, SPA labial que valoriza o seu formato natural. Agende seu horário e
+            sinta a diferença no espelho.
+          </p>
+          <div class="badges">
+            <span class="badge">Brasileiro</span>
+            <span class="badge">Fox Eyes</span>
+            <span class="badge">Designer Sobrancelha</span>
+            <span class="badge">Manutenção</span>
+          </div>
+          <div class="cta">
+            <a
+              class="btn btn--gold"
+              href="https://wa.me/5514998758126"
+              target="_blank"
+              rel="noopener"
+              >Agendar no WhatsApp</a
+            >
+            <a
+              class="btn"
+              href="https://www.instagram.com/nayane_damasceno.lash?igsh=MThnOTN1em5jd3o4Yg=="
+              target="_blank"
+              rel="noopener"
+              >Instagram</a
+            >
+            <a
+              class="btn"
+              href="https://www.tiktok.com/@nayanedamasceno2?_t=ZM-8z0wtgF6PIu&_r=1"
+              target="_blank"
+              rel="noopener"
+              >TikTok</a
+            >
+          </div>
+        </div>
+        <div class="card">
+          <img
+            src="foto nany.jpeg"
+            alt="Espaço de atendimento com espelho orgânico dourado"
+            loading="lazy"
+          />
+        </div>
+      </section>
+
+      <section id="servicos" class="section container">
+        <h2>Serviços</h2>
+        <div class="grid-3">
+          <article class="card service">
+            <h3>Brasileiro</h3>
+            <p>
+              É uma técnica inovadora que proporciona um olhar dramático e
+              volumoso.
+            </p>
+          </article>
+          <article class="card service">
+            <h3>Híbrido</h3>
+            <p>
+              Mistura equilíbrio entre naturalidade e volume, realçando o olhar
+              com leveza.
+            </p>
+          </article>
+          <article class="card service">
+            <h3>Fox Eyes</h3>
+            <p>
+              Fio a fio para efeito natural e elegante, perfeito para o dia a
+              dia, para um acabamento confortável e sofisticado.
+            </p>
+          </article>
+          <article class="card service">
+            <h3>Design de sobrancelha (HENNA)</h3>
+            <p>
+              Permite definir melhor a sobrancelha, proporcionando um destaque
+              natural ao olhar, realçando a expressão facial.
+            </p>
+          </article>
+          <article class="card service">
+            <h3>Manutenção</h3>
+            <p>
+              Periódica para manter a beleza e durabilidade dos cílios,
+              garantindo um olhar sempre impecável.
+            </p>
+          </article>
+          <article class="card service">
+            <h3>Desing de Sobrancelha (Personalizado)</h3>
+            <p>Proporciona um olhar natural, perfeito para o dia a dia.</p>
+          </article>
+        </div>
+        <div class="divider"></div>
+      </section>
+
+      <section id="galeria" class="section container">
+        <h2>Resultados</h2>
+        <div class="gallery">
+          <figure>
+            <img
+              src="Foto minha.jpeg"
+              alt="IMAGEM-MODELO"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="Estensão01.jpeg"
+              alt="IMAGEM-MODELO"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="Estensão02.jpeg"
+              alt="IMAGEM-MODELO"
+              loading="lazy"
+            />
+          </figure>
+        <figure>
+            <img
+              src="rosto yasmin.jpeg"
+              alt="IMAGEM-MODELO"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="cilios yasmin.jpeg"
+              alt="IMAGEM-MODELO"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="nany 1 cilios.jpeg"
+              alt="IMAGEM-MODELO"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="rosto.jpeg"
+              alt="IMAGEM-MODELO"
+              loading="lazy"
+            />
+          </figure>
+          <figure>
+            <img
+              src="Estensão03.jpeg"
+              alt="IMAGEM-MODELO"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section id="contato" class="section container">
+        <div class="contact">
+          <h2>Contato</h2>
+          <p class="row">
+            <a
+              class="chip"
+              href="https://wa.me/5514998758126"
+              target="_blank"
+              rel="noopener"
+              >WhatsApp: +55 14 99875-8126</a
+            >
+            <a
+              class="chip"
+              href="https://www.instagram.com/nayane_damasceno.lash?igsh=MThnOTN1em5jd3o4Yg=="
+              target="_blank"
+              rel="noopener"
+              >Instagram</a
+            >
+            <a
+              class="chip"
+              href="https://www.tiktok.com/@nayanedamasceno2?_t=ZM-8z0wtgF6PIu&_r=1"
+              target="_blank"
+              rel="noopener"
+              >TikTok</a
+            >
+          </p>
+          <div class="address">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+            </svg>
+            <p>R. Tupã, 252 - Sen. Salgado Filho, Marília - SP, 17502-275</p>
+          </div>
+          <div class="cta">
+            <a
+              class="btn btn--gold"
+              href="https://wa.me/5514998758126"
+              target="_blank"
+              rel="noopener"
+              >Quero agendar agora</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2025 Nayane Damasceno • Todos os direitos reservados.
+      </div>
+    </footer>
+  </body>
+</html>
+
